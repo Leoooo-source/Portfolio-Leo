@@ -1,92 +1,175 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>Apropos</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accueil - Léo Brunerie</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 
 <style>
-body{margin:0;font-family:Roboto;background:#0f172a;color:#e5e7eb;padding:40px;}
-a{color:#38bdf8;text-decoration:none;}
-nav a{margin-right:20px;}
-</style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Roboto', sans-serif;
+}
 
+body{
+    background:#0f172a;
+    color:#e5e7eb;
+    overflow-x:hidden;
+}
+
+/* Navigation */
+header{
+    position:fixed;
+    top:0;
+    width:100%;
+    background:#111827;
+    padding:20px 40px;
+    z-index:1000;
+}
+
+nav a{
+    color:#e5e7eb;
+    margin-right:25px;
+    text-decoration:none;
+    font-weight:500;
+}
+
+nav a:hover{
+    color:#38bdf8;
+}
+
+/* Section */
+section{
+    padding:140px 40px 80px;
+    max-width:1000px;
+    margin:auto;
+}
+
+h1{
+    font-size:32px;
+    margin-bottom:30px;
+    border-bottom:2px solid #38bdf8;
+    padding-bottom:10px;
+}
+
+.card{
+    background:#1f2937;
+    padding:30px;
+    border-radius:8px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.4);
+    line-height:1.8;
+}
+
+/* Fond animé */
+#network-bg{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:-1;
+}
+</style>
 </head>
+
 <body>
+
+<canvas id="network-bg"></canvas>
+
+<header>
 <nav>
 <a href="index.html">Accueil</a>
-<a href="apropos.html">A propos</a>
 <a href="entreprise.html">Entreprise</a>
 <a href="parcours.html">Parcours</a>
 <a href="projets.html">Projets</a>
 <a href="competences.html">Compétences</a>
 <a href="veilles.html">Veilles</a>
 </nav>
-<h1>Apropos</h1>
-<p>Contenu de la section apropos.</p>
+</header>
 
-<canvas id="network-bg"></canvas>
+<section>
+<h1>A propos</h1>
+
+<div class="card">
+<p><strong>Bonjour, moi c’est Léo Brunerie.</strong></p>
+
+<p>
+Je suis actuellement étudiant au Lycée Suzanne Valadon de Limoges en seconde et dernière année de BTS SIO 
+(Services Informatiques aux Organisations) en Option SISR « Spécialité Réseaux ».
+</p>
+
+<p>
+Actuellement en fin d’étude, je vous propose sur ce portfolio de retrouver les différents projets professionnels 
+et compétences que j’ai pu développer durant ma formation en BTS.
+</p>
+</div>
+
+</section>
+
 <script>
 const canvas = document.getElementById("network-bg");
 const ctx = canvas.getContext("2d");
-canvas.style.position="fixed";
-canvas.style.top="0";
-canvas.style.left="0";
-canvas.style.zIndex="-1";
+
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-let particles=[];
-const count=70;
-const maxDist=120;
+let particles = [];
+const count = 70;
+const maxDist = 120;
 
 for(let i=0;i<count;i++){
-particles.push({
-x:Math.random()*canvas.width,
-y:Math.random()*canvas.height,
-vx:(Math.random()-0.5)*0.6,
-vy:(Math.random()-0.5)*0.6
-});
+    particles.push({
+        x:Math.random()*canvas.width,
+        y:Math.random()*canvas.height,
+        vx:(Math.random()-0.5)*0.6,
+        vy:(Math.random()-0.5)*0.6
+    });
 }
 
 function draw(){
-ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.clearRect(0,0,canvas.width,canvas.height);
 
-particles.forEach(p=>{
-p.x+=p.vx;
-p.y+=p.vy;
-if(p.x<0||p.x>canvas.width)p.vx*=-1;
-if(p.y<0||p.y>canvas.height)p.vy*=-1;
-ctx.beginPath();
-ctx.arc(p.x,p.y,2,0,Math.PI*2);
-ctx.fillStyle="rgba(56,189,248,0.6)";
-ctx.fill();
-});
+    particles.forEach(p=>{
+        p.x+=p.vx;
+        p.y+=p.vy;
 
-for(let i=0;i<particles.length;i++){
-for(let j=i+1;j<particles.length;j++){
-const dx=particles[i].x-particles[j].x;
-const dy=particles[i].y-particles[j].y;
-const dist=Math.sqrt(dx*dx+dy*dy);
-if(dist<maxDist){
-ctx.beginPath();
-ctx.moveTo(particles[i].x,particles[i].y);
-ctx.lineTo(particles[j].x,particles[j].y);
-ctx.strokeStyle="rgba(56,189,248,"+(1-dist/maxDist)*0.3+")";
-ctx.stroke();
-}
-}
-}
+        if(p.x<0||p.x>canvas.width) p.vx*=-1;
+        if(p.y<0||p.y>canvas.height) p.vy*=-1;
 
-requestAnimationFrame(draw);
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,2,0,Math.PI*2);
+        ctx.fillStyle="rgba(56,189,248,0.6)";
+        ctx.fill();
+    });
+
+    for(let i=0;i<particles.length;i++){
+        for(let j=i+1;j<particles.length;j++){
+            const dx=particles[i].x-particles[j].x;
+            const dy=particles[i].y-particles[j].y;
+            const dist=Math.sqrt(dx*dx+dy*dy);
+
+            if(dist<maxDist){
+                ctx.beginPath();
+                ctx.moveTo(particles[i].x,particles[i].y);
+                ctx.lineTo(particles[j].x,particles[j].y);
+                ctx.strokeStyle="rgba(56,189,248,"+(1-dist/maxDist)*0.3+")";
+                ctx.stroke();
+            }
+        }
+    }
+
+    requestAnimationFrame(draw);
 }
 
 draw();
 
 window.addEventListener("resize",()=>{
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 });
 </script>
 
