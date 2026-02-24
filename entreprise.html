@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Entreprise - Léo Brunerie</title>
+<title>Entreprise - SONEPAR FRANCE</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Roboto',sans-serif;}
 body{background:#0f172a;color:#e5e7eb;overflow-x:hidden;}
@@ -12,10 +13,44 @@ header{position:fixed;top:0;width:100%;background:#111827;padding:20px 40px;z-in
 nav a{color:#e5e7eb;margin-right:25px;text-decoration:none;font-weight:500;}
 nav a:hover{color:#38bdf8;}
 section{padding:140px 40px;}
-h1{font-size:32px;border-bottom:2px solid #38bdf8;padding-bottom:10px;}
+h1{font-size:32px;border-bottom:2px solid #38bdf8;padding-bottom:10px;margin-bottom:30px;}
+
+.card{
+  background:#1f2937;
+  padding:30px;
+  border-radius:8px;
+  box-shadow:0 6px 20px rgba(0,0,0,0.45);
+  line-height:1.8;
+  max-width:900px;
+}
+
+.section-title{
+  margin-top:30px;
+  margin-bottom:15px;
+  font-size:20px;
+  font-weight:600;
+  color:#38bdf8;
+  border-left:4px solid #38bdf8;
+  padding-left:12px;
+}
+
+iframe{
+  width:100%;
+  height:400px;
+  border-radius:8px;
+  margin-top:20px;
+  border:1px solid #26547c;
+}
+
+ul{
+    margin-left:20px;
+    margin-top:10px;
+}
+
 #network-bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;}
 </style>
 </head>
+
 <body>
 
 <canvas id="network-bg"></canvas>
@@ -32,9 +67,49 @@ h1{font-size:32px;border-bottom:2px solid #38bdf8;padding-bottom:10px;}
 </header>
 
 <section>
-<h1>Entreprise</h1>
+
+<h1>Présentation de SONEPAR FRANCE</h1>
+
+<div class="card">
+
+<p><strong>SONEPAR FRANCE</strong> est une filiale du groupe international SONEPAR, acteur majeur de la distribution de matériel électrique, solutions digitales et services associés aux organisations modernes.</p>
+
+<div class="section-title">Activités principales</div>
+
+<p>
+Présente dans plus de 40 pays, SONEPAR accompagne les entreprises dans la transformation, l’optimisation et la sécurisation de leurs environnements techniques. Ses domaines d’intervention couvrent notamment :
+</p>
+
+<ul>
+<li><strong>Distribution de matériel électrique</strong> pour les secteurs du bâtiment, de l’industrie et des réseaux.</li>
+<li><strong>Solutions automatisées et digitales</strong> : optimisation de la gestion des stocks, solutions d’éclairage intelligentes, IoT.</li>
+<li><strong>Support technique et conseil</strong> auprès des professionnels pour la conception et l’intégration de systèmes performants.</li>
+<li><strong>Formation & développement</strong> des compétences techniques des équipes internes et externes.</li>
+</ul>
+
+<div class="section-title">Lien formation – environnement professionnel</div>
+
+<p>
+Au sein de SONEPAR FRANCE, les missions d’alternance s’alignent naturellement avec les exigences du BTS SIO : 
+administration d’infrastructures, surveillance et sécurité des réseaux, gestion de services, automatisation, et support technique avancé.
+</p>
+
+<p>
+L’environnement SECOPS offre une exposition à des problématiques concrètes de sécurité des systèmes d’information, 
+de supervision d’événements de sécurité, et d’analyse de flux réseau.
+</p>
+
+<div class="section-title">Vidéo de présentation</div>
+
+<p>Voici la vidéo officielle de présentation de SONEPAR :</p>
+
+<iframe src="https://www.youtube.com/embed/G8Rflmxno_s" allowfullscreen></iframe>
+
+</div>
+
 </section>
 
 <script src="background.js"></script>
+
 </body>
 </html>
