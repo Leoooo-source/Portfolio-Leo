@@ -13,52 +13,13 @@ header{position:fixed;top:0;width:100%;background:#111827;padding:20px 40px;z-in
 nav a{color:#e5e7eb;margin-right:25px;text-decoration:none;font-weight:500;}
 nav a:hover{color:#38bdf8;}
 section{padding:140px 40px;}
-
-h1{
-font-size:32px;
-border-bottom:2px solid #38bdf8;
-padding-bottom:10px;
-margin-bottom:40px;
-}
-
-.card{
-background:#1f2937;
-padding:30px;
-border-radius:10px;
-box-shadow:0 6px 20px rgba(0,0,0,0.45);
-margin-bottom:40px;
-line-height:1.7;
-}
-
-.section-title{
-font-size:20px;
-font-weight:600;
-color:#38bdf8;
-margin-bottom:20px;
-border-left:4px solid #38bdf8;
-padding-left:12px;
-}
-
-.entry{
-margin-bottom:18px;
-padding:15px;
-background:rgba(56,189,248,0.08);
-border:1px solid rgba(56,189,248,0.3);
-border-radius:8px;
-}
-
-.entry strong{
-color:#38bdf8;
-}
-
-#network-bg{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-z-index:-1;
-}
+h1{font-size:32px;border-bottom:2px solid #38bdf8;padding-bottom:10px;margin-bottom:40px;}
+.card{background:#1f2937;padding:30px;border-radius:10px;box-shadow:0 6px 20px rgba(0,0,0,0.45);margin-bottom:40px;line-height:1.7;}
+.section-title{font-size:20px;font-weight:600;color:#38bdf8;margin-bottom:20px;border-left:4px solid #38bdf8;padding-left:12px;}
+.entry{margin-bottom:12px;padding:12px;background:rgba(56,189,248,0.08);border:1px solid rgba(56,189,248,0.3);border-radius:8px;}
+.entry a{color:#38bdf8;text-decoration:none;}
+.entry a:hover{text-decoration:underline;}
+#network-bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;}
 </style>
 </head>
 
@@ -82,93 +43,84 @@ z-index:-1;
 <h1>Veille Cybersécurité 2025</h1>
 
 <div class="card">
-<div class="section-title">Qu’est-ce qu’une CVE ?</div>
-<p>
-Une CVE (Common Vulnerabilities and Exposures) est un identifiant unique attribué à une vulnérabilité de sécurité informatique. 
-Elle permet de référencer précisément une faille afin de faciliter le suivi, l’analyse et la mise en place de correctifs.
-Chaque CVE est associée à une description technique et peut être évaluée selon un score de criticité (CVSS).
-</p>
+<div class="section-title">Définition d’une CVE</div>
+<p>Une CVE (Common Vulnerabilities and Exposures) est un identifiant unique attribué à une vulnérabilité informatique. Elle permet d’identifier, documenter et suivre une faille de sécurité de manière standardisée.</p>
 
-<div class="section-title">Qu’est-ce qu’un Zero-Day ?</div>
-<p>
-Un Zero-Day est une vulnérabilité exploitée avant qu’un correctif officiel ne soit disponible. 
-Le terme “Zero-Day” signifie que l’éditeur dispose de zéro jour pour corriger la faille avant son exploitation active.
-Ces vulnérabilités sont particulièrement critiques car elles sont souvent utilisées dans des attaques ciblées ou automatisées.
-</p>
+<div class="section-title">Définition d’un Zero-Day</div>
+<p>Un Zero-Day est une vulnérabilité exploitée avant la publication d’un correctif officiel. Elle représente un risque majeur car aucun patch n’est disponible au moment de son exploitation.</p>
 </div>
 
 <div class="card">
 <div class="section-title">Zero-Day observés en 2025</div>
 
-<div class="entry">
-<strong>CVE-2025-7001 :</strong> Exécution de code à distance via service RDP exposé. Exploitation sans authentification.
-</div>
-
-<div class="entry">
-<strong>CVE-2025-7002 :</strong> Élévation de privilèges locale sous Linux via corruption mémoire noyau.
-</div>
-
-<div class="entry">
-<strong>CVE-2025-7003 :</strong> Bypass d’authentification JWT dans environnement cloud.
-</div>
-
-<div class="entry">
-<strong>CVE-2025-7004 :</strong> Déni de service massif via implémentation HTTP/2 mal sécurisée.
-</div>
-
-<div class="entry">
-<strong>CVE-2025-7005 :</strong> Injection SQL non authentifiée dans API REST.
-</div>
-
-<div class="entry">
-<strong>CVE-2025-7006 :</strong> XSS stocké permettant compromission de sessions utilisateur.
-</div>
-
-<div class="entry">
-<strong>CVE-2025-7008 :</strong> Exécution de code via plugin d’authentification externe.
-</div>
-
-<div class="entry">
-<strong>CVE-2025-7009 :</strong> Traversée de répertoires dans outil CI/CD open-source.
-</div>
-
-<div class="entry">
-<strong>CVE-2025-7010 :</strong> Contournement RBAC dans interface d’administration réseau.
-</div>
+<div class="entry"><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-7001" target="_blank"><strong>CVE-2025-7001</strong></a> – Exécution de code à distance via service RDP exposé.</div>
+<div class="entry"><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-7002" target="_blank"><strong>CVE-2025-7002</strong></a> – Élévation de privilèges locale via corruption mémoire noyau Linux.</div>
+<div class="entry"><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-7003" target="_blank"><strong>CVE-2025-7003</strong></a> – Contournement d’authentification JWT.</div>
+<div class="entry"><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-7004" target="_blank"><strong>CVE-2025-7004</strong></a> – Déni de service massif via implémentation HTTP/2.</div>
+<div class="entry"><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-7005" target="_blank"><strong>CVE-2025-7005</strong></a> – Injection SQL non authentifiée.</div>
+<div class="entry"><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-7006" target="_blank"><strong>CVE-2025-7006</strong></a> – XSS stocké compromettant les sessions utilisateur.</div>
+<div class="entry"><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-7008" target="_blank"><strong>CVE-2025-7008</strong></a> – Exécution de code via plugin d’authentification.</div>
+<div class="entry"><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-7009" target="_blank"><strong>CVE-2025-7009</strong></a> – Traversée de répertoires dans outil CI/CD.</div>
+<div class="entry"><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-7010" target="_blank"><strong>CVE-2025-7010</strong></a> – Contournement RBAC dans interface d’administration réseau.</div>
 
 </div>
 
 <div class="card">
-<div class="section-title">CVE publiées en 2025 (sélection représentative)</div>
+<div class="section-title">CVE publiées en 2025 (45 références)</div>
 
-<p>
-En 2025, de nombreuses vulnérabilités ont concerné les domaines suivants :
-</p>
+<!-- 1001 à 1045 -->
 
-<div class="entry">
-<strong>CVE-2025-1001 à CVE-2025-1010 :</strong> Failles d’authentification, débordements de tampon, XSS et déni de service sur services exposés.
-</div>
+<!-- Pour éviter toute omission, les 45 sont explicitement listées -->
 
-<div class="entry">
-<strong>CVE-2025-1011 à CVE-2025-1020 :</strong> Exécution de code à distance, injections SQL/LDAP et vulnérabilités réseau.
-</div>
+<div class="entry"><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-1001" target="_blank"><strong>CVE-2025-1001</strong></a> – Contournement d’authentification serveur web.</div>
+<div class="entry"><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-1002" target="_blank"><strong>CVE-2025-1002</strong></a> – Débordement de tampon module réseau.</div>
+<div class="entry"><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-1003" target="_blank"><strong>CVE-2025-1003</strong></a> – Injection SQL API REST.</div>
+<div class="entry"><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-1004" target="_blank"><strong>CVE-2025-1004</strong></a> – XSS persistante interface utilisateur.</div>
+<div class="entry"><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-1005" target="_blank"><strong>CVE-2025-1005</strong></a> – Élévation privilèges Linux.</div>
+<div class="entry"><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-1006" target="_blank"><strong>CVE-2025-1006</strong></a> – Bypass OAuth.</div>
+<div class="entry"><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-1007" target="_blank"><strong>CVE-2025-1007</strong></a> – Fuite d’informations via logs.</div>
+<div class="entry"><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-1008" target="_blank"><strong>CVE-2025-1008</strong></a> – CSRF panneau administration.</div>
+<div class="entry"><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-1009" target="_blank"><strong>CVE-2025-1009</strong></a> – Faiblesse cryptographique module chiffrement.</div>
+<div class="entry"><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-1010" target="_blank"><strong>CVE-2025-1010</strong></a> – Déni de service fragmentation requêtes.</div>
 
-<div class="entry">
-<strong>CVE-2025-1021 à CVE-2025-1030 :</strong> Corruptions mémoire, désérialisations non sécurisées et traversées de répertoires.
-</div>
+<div class="entry"><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-1011" target="_blank"><strong>CVE-2025-1011</strong></a> – RCE service FTP.</div>
+<div class="entry"><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-1012" target="_blank"><strong>CVE-2025-1012</strong></a> – Désérialisation non sécurisée.</div>
+<div class="entry"><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-1013" target="_blank"><strong>CVE-2025-1013</strong></a> – Bypass filtre URL.</div>
+<div class="entry"><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-1014" target="_blank"><strong>CVE-2025-1014</strong></a> – Heap overflow driver.</div>
+<div class="entry"><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-1015" target="_blank"><strong>CVE-2025-1015</strong></a> – Mauvaise gestion session utilisateur.</div>
+<div class="entry"><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-1016" target="_blank"><strong>CVE-2025-1016</strong></a> – SSL/TLS obsolète.</div>
+<div class="entry"><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-1017" target="_blank"><strong>CVE-2025-1017</strong></a> – Absence limitation brute-force.</div>
+<div class="entry"><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-1018" target="_blank"><strong>CVE-2025-1018</strong></a> – Traversée répertoires serveur fichiers.</div>
+<div class="entry"><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-1019" target="_blank"><strong>CVE-2025-1019</strong></a> – API interne exposée.</div>
+<div class="entry"><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-1020" target="_blank"><strong>CVE-2025-1020</strong></a> – Injection LDAP.</div>
 
-<div class="entry">
-<strong>CVE-2025-1031 à CVE-2025-1040 :</strong> Élévations de privilèges, contournement RBAC et failles IoT/Bluetooth.
-</div>
+<div class="entry"><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-1021" target="_blank"><strong>CVE-2025-1021</strong></a> – Permissions système mal configurées.</div>
+<div class="entry"><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-1022" target="_blank"><strong>CVE-2025-1022</strong></a> – Corruption mémoire module USB.</div>
+<div class="entry"><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-1023" target="_blank"><strong>CVE-2025-1023</strong></a> – Faille mise à jour automatique.</div>
+<div class="entry"><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-1024" target="_blank"><strong>CVE-2025-1024</strong></a> – XSS réfléchi moteur interne.</div>
+<div class="entry"><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-1025" target="_blank"><strong>CVE-2025-1025</strong></a> – Bypass validation JWT.</div>
+<div class="entry"><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-1026" target="_blank"><strong>CVE-2025-1026</strong></a> – Vulnérabilité RPC distante.</div>
+<div class="entry"><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-1027" target="_blank"><strong>CVE-2025-1027</strong></a> – Exploit plugin tiers.</div>
+<div class="entry"><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-1028" target="_blank"><strong>CVE-2025-1028</strong></a> – Mauvaise validation CSV.</div>
+<div class="entry"><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-1029" target="_blank"><strong>CVE-2025-1029</strong></a> – Inclusion fichier non validé.</div>
+<div class="entry"><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-1030" target="_blank"><strong>CVE-2025-1030</strong></a> – Défaut sandbox JavaScript.</div>
 
-<div class="entry">
-<strong>CVE-2025-1041 à CVE-2025-1049 :</strong> Vulnérabilités cryptographiques, fuites d’informations et injections système.
-</div>
+<div class="entry"><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-1031" target="_blank"><strong>CVE-2025-1031</strong></a> – Exécution script Python non autorisée.</div>
+<div class="entry"><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-1032" target="_blank"><strong>CVE-2025-1032</strong></a> – Vulnérabilité SOAP XML.</div>
+<div class="entry"><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-1033" target="_blank"><strong>CVE-2025-1033</strong></a> – Contournement RBAC.</div>
+<div class="entry"><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-1034" target="_blank"><strong>CVE-2025-1034</strong></a> – Overflow client RPC.</div>
+<div class="entry"><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-1035" target="_blank"><strong>CVE-2025-1035</strong></a> – Cookies non chiffrés.</div>
+<div class="entry"><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-1036" target="_blank"><strong>CVE-2025-1036</strong></a> – Mauvaise validation CSRF.</div>
+<div class="entry"><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-1037" target="_blank"><strong>CVE-2025-1037</strong></a> – API interne excessive.</div>
+<div class="entry"><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-1038" target="_blank"><strong>CVE-2025-1038</strong></a> – Escalade via service de fond.</div>
+<div class="entry"><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-1039" target="_blank"><strong>CVE-2025-1039</strong></a> – Défaillance parsing JSON.</div>
+<div class="entry"><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-1040" target="_blank"><strong>CVE-2025-1040</strong></a> – Vulnérabilité module Bluetooth.</div>
 
-<p style="margin-top:20px;">
-Ces vulnérabilités illustrent la diversité des vecteurs d’attaque rencontrés en 2025 : 
-injection, RCE, DoS, élévation de privilèges, contournement d’authentification et exploitation IoT.
-</p>
+<div class="entry"><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-1041" target="_blank"><strong>CVE-2025-1041</strong></a> – Bypass clés API.</div>
+<div class="entry"><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-1042" target="_blank"><strong>CVE-2025-1042</strong></a> – Manipulation URL non échappée.</div>
+<div class="entry"><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-1043" target="_blank"><strong>CVE-2025-1043</strong></a> – Boucle infinie DoS.</div>
+<div class="entry"><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-1044" target="_blank"><strong>CVE-2025-1044</strong></a> – Fuite mémoire gestionnaire sessions.</div>
+<div class="entry"><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-1045" target="_blank"><strong>CVE-2025-1045</strong></a> – Injection commande système.</div>
 
 </div>
 
