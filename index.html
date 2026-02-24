@@ -1,11 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accueil - Léo Brunerie</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Roboto',sans-serif;}
+body{background:#0f172a;color:#e5e7eb;overflow-x:hidden;}
+header{position:fixed;top:0;width:100%;background:#111827;padding:20px 40px;z-index:1000;}
+nav a{color:#e5e7eb;margin-right:25px;text-decoration:none;font-weight:500;}
+nav a:hover{color:#38bdf8;}
+section{padding:140px 40px;}
+h1{font-size:32px;border-bottom:2px solid #38bdf8;padding-bottom:10px;margin-bottom:40px;}
+
+.card{
+background:#1f2937;
+padding:40px;
+border-radius:10px;
+box-shadow:0 8px 20px rgba(0,0,0,0.45);
+line-height:1.8;
+max-width:850px;
+}
+
+.section-title{
+margin-top:40px;
+margin-bottom:15px;
+font-size:20px;
+font-weight:600;
+color:#38bdf8;
+border-left:4px solid #38bdf8;
+padding-left:12px;
+}
+
+ul{
+margin-left:25px;
+margin-top:10px;
+}
+
+.highlight{
+margin-top:25px;
+padding:20px;
+background:rgba(56,189,248,0.08);
+border:1px solid rgba(56,189,248,0.3);
+border-radius:8px;
+}
+
+#network-bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;}
+</style>
+</head>
+
+<body>
+
+<canvas id="network-bg"></canvas>
+
+<header>
+<nav>
+<a href="index.html">Accueil</a>
+<a href="entreprise.html">Entreprise</a>
+<a href="projets.html">Projets</a>
+<a href="competences.html">Compétences / Logiciels</a>
+<a href="veilles.html">Veilles</a>
+<a href="contacts.html">Contacts</a>
+</nav>
+</header>
+
 <section>
 
 <h1>A propos</h1>
 
-<div style="display:flex;gap:40px;align-items:flex-start;flex-wrap:wrap;">
-
-<!-- COLONNE GAUCHE -->
-<div class="card" style="flex:2;min-width:320px;">
+<div class="card">
 
 <p><strong>Bonjour, je suis Léo Brunerie.</strong></p>
 
@@ -20,46 +85,59 @@ Cette alternance me permet d’évoluer dans un environnement professionnel orie
 gestion des incidents, administration d’infrastructures et analyse des vulnérabilités.
 </p>
 
+<div class="section-title">Présentation du BTS SIO</div>
+
+<p>
+Le BTS SIO forme des techniciens supérieurs capables d’administrer, maintenir et sécuriser des infrastructures informatiques. 
+La spécialité SISR prépare aux métiers liés aux réseaux, aux systèmes et à la cybersécurité opérationnelle.
+</p>
+
+<p>
+À l’issue de cette formation, les diplômés peuvent intégrer directement le marché du travail 
+ou poursuivre leurs études vers des cursus spécialisés en cybersécurité, administration systèmes ou ingénierie réseaux.
+</p>
+
+<div class="section-title">Spécialité SISR</div>
+
+<p>
+L’option SISR développe des compétences techniques en :
+</p>
+
+<ul>
+<li>Administration systèmes Windows et Linux</li>
+<li>Gestion et sécurisation des infrastructures réseaux</li>
+<li>Configuration de pare-feux et solutions de sécurité</li>
+<li>Supervision et gestion des incidents</li>
+<li>Analyse de vulnérabilités</li>
+</ul>
+
 <div class="section-title">Positionnement professionnel</div>
 
 <p>
-Je m’oriente vers les métiers liés à la cybersécurité, 
+Je m’oriente particulièrement vers les métiers liés à la cybersécurité, 
 à l’administration sécurisée des infrastructures et aux environnements SOC / SECOPS.
 </p>
 
-</div>
-
-<!-- COLONNE DROITE -->
-<div style="flex:1;min-width:280px;display:flex;flex-direction:column;gap:25px;">
-
-<div class="card">
-<div class="section-title">Profil</div>
-<p><strong>Formation :</strong> BTS SIO – SISR</p>
-<p><strong>Statut :</strong> Alternant SECOPS</p>
-<p><strong>Spécialisation :</strong> Cybersécurité & Réseaux</p>
-</div>
-
-<div class="card">
-<div class="section-title">Compétences clés</div>
+<div class="highlight">
+<strong>Objectif professionnel :</strong>
 <ul>
-<li>Administration systèmes</li>
-<li>Configuration Firewall</li>
-<li>Analyse de vulnérabilités</li>
-<li>Gestion incidents sécurité</li>
-<li>Veille CVE / Zero-Day</li>
+<li>Administration systèmes et réseaux sécurisés</li>
+<li>Analyse de vulnérabilités et gestion des risques</li>
+<li>Participation à des environnements SOC / SECOPS</li>
+<li>Renforcement de la sécurité des infrastructures</li>
 </ul>
 </div>
 
-<div class="card">
-<div class="section-title">Objectif</div>
-<p>
-Intégrer un environnement orienté sécurité afin de renforcer les infrastructures 
-et participer activement à la protection des systèmes d'information.
+<p style="margin-top:30px;">
+Cette formation en alternance me permet de développer des compétences techniques concrètes 
+ainsi qu’une vision opérationnelle des enjeux actuels de la cybersécurité en entreprise.
 </p>
-</div>
-
-</div>
 
 </div>
 
 </section>
+
+<script src="background.js"></script>
+
+</body>
+</html>
