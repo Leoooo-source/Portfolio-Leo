@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Projets - Léo Brunerie</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Roboto',sans-serif;}
 body{background:#0f172a;color:#e5e7eb;overflow-x:hidden;}
@@ -12,10 +13,57 @@ header{position:fixed;top:0;width:100%;background:#111827;padding:20px 40px;z-in
 nav a{color:#e5e7eb;margin-right:25px;text-decoration:none;font-weight:500;}
 nav a:hover{color:#38bdf8;}
 section{padding:140px 40px;}
-h1{font-size:32px;border-bottom:2px solid #38bdf8;padding-bottom:10px;}
-#network-bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;}
+
+h1{
+font-size:32px;
+border-bottom:2px solid #38bdf8;
+padding-bottom:10px;
+margin-bottom:40px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:30px;
+}
+
+.card{
+background:#1f2937;
+padding:25px;
+border-radius:10px;
+box-shadow:0 6px 20px rgba(0,0,0,0.45);
+line-height:1.6;
+}
+
+.card h2{
+font-size:18px;
+margin-bottom:15px;
+color:#38bdf8;
+}
+
+.badge{
+display:inline-block;
+margin-top:15px;
+padding:6px 10px;
+font-size:12px;
+background:rgba(56,189,248,0.15);
+border:1px solid rgba(56,189,248,0.4);
+border-radius:6px;
+margin-right:6px;
+margin-bottom:6px;
+}
+
+#network-bg{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-1;
+}
 </style>
 </head>
+
 <body>
 
 <canvas id="network-bg"></canvas>
@@ -32,9 +80,115 @@ h1{font-size:32px;border-bottom:2px solid #38bdf8;padding-bottom:10px;}
 </header>
 
 <section>
-<h1>Projets</h1>
+
+<h1>Projets réalisés en entreprise</h1>
+
+<div class="grid">
+
+<div class="card">
+<h2>Création d’un lab en vue de Pentest</h2>
+<p>Mise en place d’un environnement virtualisé reproduisant une infrastructure interne (AD, segmentation réseau, machines vulnérables) afin de réaliser des tests d’intrusion contrôlés et analyser les failles potentielles.</p>
+<div>
+<span class="badge">Mettre à disposition un service informatique</span>
+<span class="badge">Travailler en mode projet</span>
+</div>
+</div>
+
+<div class="card">
+<h2>Réalisation de Pentest sur le lab</h2>
+<p>Exploitation de vulnérabilités connues (CVE), élévation de privilèges, rédaction de recommandations de durcissement de l’Active Directory et des systèmes.</p>
+<div>
+<span class="badge">Gérer le patrimoine informatique</span>
+<span class="badge">Organiser son développement professionnel</span>
+</div>
+</div>
+
+<div class="card">
+<h2>Création de comptes VPN Fortinet (sortie Citrix)</h2>
+<p>Configuration et migration des accès distants vers une solution SSL-VPN Fortinet. Gestion des profils utilisateurs, règles firewall et tests de sécurité.</p>
+<div>
+<span class="badge">Mettre à disposition un service informatique</span>
+<span class="badge">Gérer le patrimoine informatique</span>
+</div>
+</div>
+
+<div class="card">
+<h2>Ouverture de flux Firewall Fortinet</h2>
+<p>Analyse des besoins métiers et configuration des règles de filtrage réseau. Documentation et validation des flux inter-VLAN.</p>
+<div>
+<span class="badge">Gérer le patrimoine informatique</span>
+<span class="badge">Répondre aux incidents</span>
+</div>
+</div>
+
+<div class="card">
+<h2>Assistance ticketing SECOPS</h2>
+<p>Analyse d’alertes de sécurité, traitement des incidents, qualification des menaces et suivi via outil de ticketing interne.</p>
+<div>
+<span class="badge">Répondre aux incidents</span>
+<span class="badge">Gérer le patrimoine informatique</span>
+</div>
+</div>
+
+<div class="card">
+<h2>Analyse mails de phishing</h2>
+<p>Étude des en-têtes, vérification SPF/DKIM/DMARC, identification des indicateurs de compromission et sensibilisation des utilisateurs.</p>
+<div>
+<span class="badge">Répondre aux incidents</span>
+<span class="badge">Organiser son développement professionnel</span>
+</div>
+</div>
+
+<div class="card">
+<h2>Gestion des blocages et whitelist Mimecast</h2>
+<p>Administration des règles de sécurité email, gestion des faux positifs et surveillance des tentatives d’usurpation d’identité.</p>
+<div>
+<span class="badge">Gérer le patrimoine informatique</span>
+<span class="badge">Répondre aux incidents</span>
+</div>
+</div>
+
+<div class="card">
+<h2>Assistance installation Zscaler</h2>
+<p>Participation au déploiement de la solution de sécurisation des accès web, configuration des politiques de filtrage et tests de conformité.</p>
+<div>
+<span class="badge">Mettre à disposition un service informatique</span>
+<span class="badge">Travailler en mode projet</span>
+</div>
+</div>
+
+<div class="card">
+<h2>Formation et installation Tanium</h2>
+<p>Déploiement de l’agent sur les endpoints, supervision de la conformité sécurité et montée en compétences sur l’outil.</p>
+<div>
+<span class="badge">Gérer le patrimoine informatique</span>
+<span class="badge">Organiser son développement professionnel</span>
+</div>
+</div>
+
+<div class="card">
+<h2>Projet « Golden Ticket » – Sécurité AD</h2>
+<p>Analyse des vulnérabilités Kerberos, audit des comptes à privilèges élevés et recommandations de sécurisation de l’Active Directory.</p>
+<div>
+<span class="badge">Gérer le patrimoine informatique</span>
+<span class="badge">Travailler en mode projet</span>
+</div>
+</div>
+
+<div class="card">
+<h2>Veille sur les CVE et Zero Day</h2>
+<p>Suivi des vulnérabilités critiques, analyse d’impact sur le SI interne et transmission d’alertes au service sécurité.</p>
+<div>
+<span class="badge">Organiser son développement professionnel</span>
+<span class="badge">Gérer le patrimoine informatique</span>
+</div>
+</div>
+
+</div>
+
 </section>
 
 <script src="background.js"></script>
+
 </body>
 </html>
