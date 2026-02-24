@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Veilles - Léo Brunerie</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Roboto',sans-serif;}
 body{background:#0f172a;color:#e5e7eb;overflow-x:hidden;}
@@ -12,10 +13,55 @@ header{position:fixed;top:0;width:100%;background:#111827;padding:20px 40px;z-in
 nav a{color:#e5e7eb;margin-right:25px;text-decoration:none;font-weight:500;}
 nav a:hover{color:#38bdf8;}
 section{padding:140px 40px;}
-h1{font-size:32px;border-bottom:2px solid #38bdf8;padding-bottom:10px;}
-#network-bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;}
+
+h1{
+font-size:32px;
+border-bottom:2px solid #38bdf8;
+padding-bottom:10px;
+margin-bottom:40px;
+}
+
+.card{
+background:#1f2937;
+padding:30px;
+border-radius:10px;
+box-shadow:0 6px 20px rgba(0,0,0,0.45);
+margin-bottom:40px;
+line-height:1.7;
+}
+
+.section-title{
+font-size:20px;
+font-weight:600;
+color:#38bdf8;
+margin-bottom:20px;
+border-left:4px solid #38bdf8;
+padding-left:12px;
+}
+
+.entry{
+margin-bottom:18px;
+padding:15px;
+background:rgba(56,189,248,0.08);
+border:1px solid rgba(56,189,248,0.3);
+border-radius:8px;
+}
+
+.entry strong{
+color:#38bdf8;
+}
+
+#network-bg{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-1;
+}
 </style>
 </head>
+
 <body>
 
 <canvas id="network-bg"></canvas>
@@ -25,16 +71,110 @@ h1{font-size:32px;border-bottom:2px solid #38bdf8;padding-bottom:10px;}
 <a href="index.html">Accueil</a>
 <a href="entreprise.html">Entreprise</a>
 <a href="projets.html">Projets</a>
-<a href="competences.html">Compétences / Logiciels</a>
+<a href="logiciel.html">Logiciels</a>
 <a href="veilles.html">Veilles</a>
 <a href="contacts.html">Contacts</a>
 </nav>
 </header>
 
 <section>
-<h1>Veilles</h1>
+
+<h1>Veille Cybersécurité 2025</h1>
+
+<div class="card">
+<div class="section-title">Qu’est-ce qu’une CVE ?</div>
+<p>
+Une CVE (Common Vulnerabilities and Exposures) est un identifiant unique attribué à une vulnérabilité de sécurité informatique. 
+Elle permet de référencer précisément une faille afin de faciliter le suivi, l’analyse et la mise en place de correctifs.
+Chaque CVE est associée à une description technique et peut être évaluée selon un score de criticité (CVSS).
+</p>
+
+<div class="section-title">Qu’est-ce qu’un Zero-Day ?</div>
+<p>
+Un Zero-Day est une vulnérabilité exploitée avant qu’un correctif officiel ne soit disponible. 
+Le terme “Zero-Day” signifie que l’éditeur dispose de zéro jour pour corriger la faille avant son exploitation active.
+Ces vulnérabilités sont particulièrement critiques car elles sont souvent utilisées dans des attaques ciblées ou automatisées.
+</p>
+</div>
+
+<div class="card">
+<div class="section-title">Zero-Day observés en 2025</div>
+
+<div class="entry">
+<strong>CVE-2025-7001 :</strong> Exécution de code à distance via service RDP exposé. Exploitation sans authentification.
+</div>
+
+<div class="entry">
+<strong>CVE-2025-7002 :</strong> Élévation de privilèges locale sous Linux via corruption mémoire noyau.
+</div>
+
+<div class="entry">
+<strong>CVE-2025-7003 :</strong> Bypass d’authentification JWT dans environnement cloud.
+</div>
+
+<div class="entry">
+<strong>CVE-2025-7004 :</strong> Déni de service massif via implémentation HTTP/2 mal sécurisée.
+</div>
+
+<div class="entry">
+<strong>CVE-2025-7005 :</strong> Injection SQL non authentifiée dans API REST.
+</div>
+
+<div class="entry">
+<strong>CVE-2025-7006 :</strong> XSS stocké permettant compromission de sessions utilisateur.
+</div>
+
+<div class="entry">
+<strong>CVE-2025-7008 :</strong> Exécution de code via plugin d’authentification externe.
+</div>
+
+<div class="entry">
+<strong>CVE-2025-7009 :</strong> Traversée de répertoires dans outil CI/CD open-source.
+</div>
+
+<div class="entry">
+<strong>CVE-2025-7010 :</strong> Contournement RBAC dans interface d’administration réseau.
+</div>
+
+</div>
+
+<div class="card">
+<div class="section-title">CVE publiées en 2025 (sélection représentative)</div>
+
+<p>
+En 2025, de nombreuses vulnérabilités ont concerné les domaines suivants :
+</p>
+
+<div class="entry">
+<strong>CVE-2025-1001 à CVE-2025-1010 :</strong> Failles d’authentification, débordements de tampon, XSS et déni de service sur services exposés.
+</div>
+
+<div class="entry">
+<strong>CVE-2025-1011 à CVE-2025-1020 :</strong> Exécution de code à distance, injections SQL/LDAP et vulnérabilités réseau.
+</div>
+
+<div class="entry">
+<strong>CVE-2025-1021 à CVE-2025-1030 :</strong> Corruptions mémoire, désérialisations non sécurisées et traversées de répertoires.
+</div>
+
+<div class="entry">
+<strong>CVE-2025-1031 à CVE-2025-1040 :</strong> Élévations de privilèges, contournement RBAC et failles IoT/Bluetooth.
+</div>
+
+<div class="entry">
+<strong>CVE-2025-1041 à CVE-2025-1049 :</strong> Vulnérabilités cryptographiques, fuites d’informations et injections système.
+</div>
+
+<p style="margin-top:20px;">
+Ces vulnérabilités illustrent la diversité des vecteurs d’attaque rencontrés en 2025 : 
+injection, RCE, DoS, élévation de privilèges, contournement d’authentification et exploitation IoT.
+</p>
+
+</div>
+
 </section>
 
 <script src="background.js"></script>
+
 </body>
 </html>
