@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Compétences / Logiciels - Léo Brunerie</title>
+<title>Logiciels - Léo Brunerie</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Roboto',sans-serif;}
 body{background:#0f172a;color:#e5e7eb;overflow-x:hidden;}
@@ -12,10 +13,70 @@ header{position:fixed;top:0;width:100%;background:#111827;padding:20px 40px;z-in
 nav a{color:#e5e7eb;margin-right:25px;text-decoration:none;font-weight:500;}
 nav a:hover{color:#38bdf8;}
 section{padding:140px 40px;}
-h1{font-size:32px;border-bottom:2px solid #38bdf8;padding-bottom:10px;}
-#network-bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;}
+
+h1{
+font-size:32px;
+border-bottom:2px solid #38bdf8;
+padding-bottom:10px;
+margin-bottom:40px;
+}
+
+.card{
+background:#1f2937;
+padding:35px;
+border-radius:10px;
+box-shadow:0 6px 20px rgba(0,0,0,0.45);
+max-width:900px;
+}
+
+.section-title{
+font-size:20px;
+font-weight:600;
+color:#38bdf8;
+margin-bottom:25px;
+border-left:4px solid #38bdf8;
+padding-left:12px;
+}
+
+.software-list{
+list-style:none;
+}
+
+.software-list li{
+margin-bottom:18px;
+padding:12px 16px;
+background:rgba(56,189,248,0.08);
+border:1px solid rgba(56,189,248,0.3);
+border-radius:8px;
+transition:all 0.2s ease;
+}
+
+.software-list li:hover{
+background:rgba(56,189,248,0.15);
+transform:translateX(4px);
+}
+
+.software-list a{
+color:#38bdf8;
+text-decoration:none;
+font-weight:500;
+}
+
+.software-list a:hover{
+text-decoration:underline;
+}
+
+#network-bg{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-1;
+}
 </style>
 </head>
+
 <body>
 
 <canvas id="network-bg"></canvas>
@@ -25,16 +86,77 @@ h1{font-size:32px;border-bottom:2px solid #38bdf8;padding-bottom:10px;}
 <a href="index.html">Accueil</a>
 <a href="entreprise.html">Entreprise</a>
 <a href="projets.html">Projets</a>
-<a href="competences.html">Compétences / Logiciels</a>
+<a href="logiciel.html">Logiciels</a>
 <a href="veilles.html">Veilles</a>
 <a href="contacts.html">Contacts</a>
 </nav>
 </header>
 
 <section>
-<h1>Compétences / Logiciels</h1>
+
+<h1>Logiciels</h1>
+
+<div class="card">
+
+<div class="section-title">Logiciels d’entreprise</div>
+
+<ul class="software-list">
+
+<li>
+<a href="https://www.fortinet.com/" target="_blank">
+Fortinet
+</a>
+</li>
+
+<li>
+<a href="https://www.fortinet.com/products/management/fortimanager" target="_blank">
+FortiManager
+</a>
+</li>
+
+<li>
+<a href="https://learn.microsoft.com/en-us/mem/configmgr/" target="_blank">
+Microsoft SCCM (System Center Configuration Manager)
+</a>
+</li>
+
+<li>
+<a href="https://www.tenable.com/products/nessus" target="_blank">
+Tenable (Nessus)
+</a>
+</li>
+
+<li>
+<a href="https://www.tanium.com/" target="_blank">
+Tanium
+</a>
+</li>
+
+<li>
+<a href="https://www.armis.com/" target="_blank">
+Armis
+</a>
+</li>
+
+<li>
+<a href="https://www.zscaler.com/" target="_blank">
+Zscaler
+</a>
+</li>
+
+<li>
+<a href="https://www.mimecast.com/" target="_blank">
+Mimecast
+</a>
+</li>
+
+</ul>
+
+</div>
+
 </section>
 
 <script src="background.js"></script>
+
 </body>
 </html>
