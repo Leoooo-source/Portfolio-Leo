@@ -5,17 +5,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contacts - Léo Brunerie</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Roboto',sans-serif;}
-body{background:#0f172a;color:#e5e7eb;overflow-x:hidden;}
-header{position:fixed;top:0;width:100%;background:#111827;padding:20px 40px;z-index:1000;}
+body{background:#0f172a;color:#e5e7eb;overflow-x:hidden;text-align:center;}
+header{position:fixed;top:0;width:100%;background:#111827;padding:20px 40px;z-index:1000;text-align:left;}
 nav a{color:#e5e7eb;margin-right:25px;text-decoration:none;font-weight:500;}
 nav a:hover{color:#38bdf8;}
-section{padding:140px 40px;}
-h1{font-size:32px;border-bottom:2px solid #38bdf8;padding-bottom:10px;}
+section{padding:140px 40px;max-width:900px;margin:auto;}
+h1{font-size:32px;border-bottom:2px solid #38bdf8;padding-bottom:10px;margin-bottom:40px;text-align:left;}
+.card{background:#1f2937;padding:30px;border-radius:10px;box-shadow:0 6px 20px rgba(0,0,0,0.45);margin-bottom:40px;text-align:left;}
+.section-title{font-size:20px;font-weight:600;color:#38bdf8;margin-bottom:20px;border-left:4px solid #38bdf8;padding-left:12px;}
+button{background:#38bdf8;color:#0f172a;border:none;padding:12px 20px;border-radius:6px;font-weight:bold;cursor:pointer;margin-top:20px;}
+button:hover{background:#0ea5e9;}
+canvas#tetris{background:#111;border:2px solid #38bdf8;margin-top:20px;display:none;}
+#score{margin-top:10px;font-size:18px;}
 #network-bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;}
 </style>
 </head>
+
 <body>
 
 <canvas id="network-bg"></canvas>
@@ -25,16 +33,184 @@ h1{font-size:32px;border-bottom:2px solid #38bdf8;padding-bottom:10px;}
 <a href="index.html">Accueil</a>
 <a href="entreprise.html">Entreprise</a>
 <a href="projets.html">Projets</a>
-<a href="competences.html">Compétences / Logiciels</a>
+<a href="logiciel.html">Logiciels</a>
 <a href="veilles.html">Veilles</a>
 <a href="contacts.html">Contacts</a>
 </nav>
 </header>
 
 <section>
-<h1>Contacts</h1>
+
+<h1>Contact</h1>
+
+<div class="card">
+<div class="section-title">Coordonnées professionnelles</div>
+
+<p><strong>Téléphone :</strong> 
+<!-- MODIFIER ICI -->
++33 6 00 00 00 00
+</p>
+
+<p><strong>Email :</strong> 
+<!-- MODIFIER ICI -->
+leo.brunerie@email.com
+</p>
+
+</div>
+
+<button onclick="startTetris()">Lancer une partie de Tetris</button>
+
+<canvas id="tetris" width="240" height="400"></canvas>
+<div id="score"></div>
+
 </section>
 
-<script src="background.js"></script>
+<script>
+/* Fond animé */
+const bg = document.getElementById('network-bg');
+const ctxBg = bg.getContext('2d');
+function resize(){bg.width=innerWidth;bg.height=innerHeight;}
+resize();addEventListener('resize',resize);
+const particles=[];
+for(let i=0;i<80;i++){
+particles.push({x:Math.random()*bg.width,y:Math.random()*bg.height,vx:(Math.random()-0.5)*0.5,vy:(Math.random()-0.5)*0.5});
+}
+function animateBg(){
+ctxBg.clearRect(0,0,bg.width,bg.height);
+ctxBg.fillStyle='rgba(56,189,248,0.6)';
+particles.forEach(p=>{
+p.x+=p.vx;p.y+=p.vy;
+if(p.x<0||p.x>bg.width)p.vx*=-1;
+if(p.y<0||p.y>bg.height)p.vy*=-1;
+ctxBg.beginPath();ctxBg.arc(p.x,p.y,1.5,0,Math.PI*2);ctxBg.fill();
+});
+requestAnimationFrame(animateBg);
+}
+animateBg();
+
+/* --- TETRIS --- */
+const canvas = document.getElementById("tetris");
+const context = canvas.getContext("2d");
+context.scale(20,20);
+
+let score = 0;
+let arena = createMatrix(12,20);
+let dropCounter = 0;
+let dropInterval = 1000;
+let lastTime = 0;
+
+function startTetris(){
+canvas.style.display="block";
+score = 0;
+updateScore();
+playerReset();
+update();
+}
+
+function createMatrix(w,h){
+const matrix=[];
+while(h--){matrix.push(new Array(w).fill(0));}
+return matrix;
+}
+
+function createPiece(){
+return [[1,1],[1,1]];
+}
+
+const player = {pos:{x:0,y:0}, matrix:null};
+
+function playerReset(){
+player.matrix = createPiece();
+player.pos.y = 0;
+player.pos.x = (arena[0].length/2 |0) - (player.matrix[0].length/2 |0);
+}
+
+function collide(arena,player){
+for(let y=0;y<player.matrix.length;y++){
+for(let x=0;x<player.matrix[y].length;x++){
+if(player.matrix[y][x]!==0 &&
+(arena[y+player.pos.y] &&
+arena[y+player.pos.y][x+player.pos.x])!==0){
+return true;
+}
+}
+}
+return false;
+}
+
+function merge(arena,player){
+player.matrix.forEach((row,y)=>{
+row.forEach((value,x)=>{
+if(value!==0){
+arena[y+player.pos.y][x+player.pos.x]=value;
+}
+});
+});
+}
+
+function playerDrop(){
+player.pos.y++;
+if(collide(arena,player)){
+player.pos.y--;
+merge(arena,player);
+arenaSweep();
+playerReset();
+}
+dropCounter=0;
+}
+
+function arenaSweep(){
+let rowCount=1;
+outer: for(let y=arena.length-1;y>=0;y--){
+for(let x=0;x<arena[y].length;x++){
+if(arena[y][x]===0){continue outer;}
+}
+arena.splice(y,1);
+arena.unshift(new Array(arena[0].length).fill(0));
+score+=10;
+updateScore();
+}
+}
+
+function updateScore(){
+document.getElementById("score").innerText="Score : "+score;
+}
+
+function drawMatrix(matrix,offset){
+matrix.forEach((row,y)=>{
+row.forEach((value,x)=>{
+if(value!==0){
+context.fillStyle="#38bdf8";
+context.fillRect(x+offset.x,y+offset.y,1,1);
+}
+});
+});
+}
+
+function draw(){
+context.fillStyle="#000";
+context.fillRect(0,0,canvas.width,canvas.height);
+drawMatrix(arena,{x:0,y:0});
+drawMatrix(player.matrix,player.pos);
+}
+
+function update(time=0){
+const deltaTime=time-lastTime;
+lastTime=time;
+dropCounter+=deltaTime;
+if(dropCounter>dropInterval){
+playerDrop();
+}
+draw();
+requestAnimationFrame(update);
+}
+
+document.addEventListener("keydown",event=>{
+if(event.key==="ArrowLeft"){player.pos.x--;}
+else if(event.key==="ArrowRight"){player.pos.x++;}
+else if(event.key==="ArrowDown"){playerDrop();}
+});
+</script>
+
 </body>
 </html>
