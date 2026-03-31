@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tableau de Synthèse - Léo Brunerie</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Roboto',sans-serif;}
+body{background:#0f172a;color:#e5e7eb;}
+header{position:fixed;top:0;width:100%;background:#111827;padding:20px 40px;z-index:1000;}
+nav a{color:#e5e7eb;margin-right:25px;text-decoration:none;font-weight:500;}
+nav a:hover{color:#38bdf8;}
+section{padding:140px 40px;max-width:1200px;margin:auto;}
+h1{font-size:32px;border-bottom:2px solid #38bdf8;padding-bottom:10px;margin-bottom:40px;}
+
+table{
+width:100%;
+border-collapse:collapse;
+background:#1f2937;
+border-radius:10px;
+overflow:hidden;
+}
+
+th, td{
+padding:15px;
+text-align:left;
+border-bottom:1px solid rgba(255,255,255,0.05);
+}
+
+th{
+background:#111827;
+color:#38bdf8;
+}
+
+tr:hover{
+background:rgba(56,189,248,0.05);
+}
+
+#network-bg{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-1;
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="network-bg"></canvas>
+
+<header>
+<nav>
+<a href="index.html">Accueil</a>
+<a href="entreprise.html">Entreprise</a>
+<a href="projets.html">Projets</a>
+<a href="logiciel.html">Logiciels</a>
+<a href="veilles.html">Veilles</a>
+<a href="tableau.html">Tableau de Synthèse</a>
+<a href="contacts.html">Contacts</a>
+</nav>
+</header>
+
+<section>
+
+<h1>Tableau de Synthèse - BTS SIO</h1>
+
+<table>
+<thead>
+<tr>
+<th>Activité</th>
+<th>Description</th>
+<th>Compétences BTS SIO</th>
+<th>Outils / Technologies</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td>Création d’un lab de Pentest</td>
+<td>Mise en place d’un environnement de test pour simuler des attaques et analyser la sécurité.</td>
+<td>Gérer le patrimoine informatique / Sécuriser</td>
+<td>Virtualisation, Kali Linux</td>
+</tr>
+
+<tr>
+<td>Création de comptes VPN Fortinet</td>
+<td>Configuration d’accès VPN sécurisé pour les utilisateurs dans le cadre de la sortie Citrix.</td>
+<td>Gérer les accès / Sécuriser</td>
+<td>Fortinet</td>
+</tr>
+
+<tr>
+<td>Assistance SECOPS</td>
+<td>Gestion des tickets liés aux incidents de sécurité et support utilisateurs.</td>
+<td>Répondre aux incidents</td>
+<td>Outil ticketing</td>
+</tr>
+
+<tr>
+<td>Ouverture de flux firewall</td>
+<td>Configuration et validation de règles de filtrage réseau.</td>
+<td>Administrer les réseaux</td>
+<td>Fortinet</td>
+</tr>
+
+<tr>
+<td>Installation Zscaler</td>
+<td>Déploiement d’une solution de sécurité cloud pour le filtrage web.</td>
+<td>Déployer un service</td>
+<td>Zscaler</td>
+</tr>
+
+<tr>
+<td>Gestion Mimecast</td>
+<td>Blocage / whitelist de mails et gestion des politiques de sécurité email.</td>
+<td>Protéger les données</td>
+<td>Mimecast</td>
+</tr>
+
+<tr>
+<td>Analyse phishing</td>
+<td>Étude et qualification de mails suspects pour identifier des tentatives d’attaque.</td>
+<td>Répondre aux incidents</td>
+<td>Analyse email</td>
+</tr>
+
+<tr>
+<td>Réalisation de Pentest</td>
+<td>Tests d’intrusion sur environnement de lab pour identifier les failles.</td>
+<td>Sécuriser le SI</td>
+<td>Kali Linux</td>
+</tr>
+
+<tr>
+<td>Installation Tanium</td>
+<td>Déploiement d’un outil de gestion et sécurité des endpoints.</td>
+<td>Gérer le parc</td>
+<td>Tanium</td>
+</tr>
+
+<tr>
+<td>Projet Golden Ticket</td>
+<td>Analyse de vulnérabilité Active Directory via attaque Kerberos.</td>
+<td>Sécuriser / Auditer</td>
+<td>Active Directory</td>
+</tr>
+
+<tr>
+<td>Veille CVE / Zero-Day</td>
+<td>Suivi des vulnérabilités critiques et nouvelles menaces.</td>
+<td>Organiser une veille</td>
+<td>NVD, CERT-FR</td>
+</tr>
+
+</tbody>
+</table>
+
+</section>
+
+<script>
+const canvas=document.getElementById('network-bg');
+const ctx=canvas.getContext('2d');
+function resize(){canvas.width=innerWidth;canvas.height=innerHeight;}
+resize();addEventListener('resize',resize);
+const particles=[];
+for(let i=0;i<80;i++){
+particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,vx:(Math.random()-0.5)*0.5,vy:(Math.random()-0.5)*0.5});
+}
+function draw(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+ctx.fillStyle='rgba(56,189,248,0.6)';
+particles.forEach(p=>{
+p.x+=p.vx;p.y+=p.vy;
+if(p.x<0||p.x>canvas.width)p.vx*=-1;
+if(p.y<0||p.y>canvas.height)p.vy*=-1;
+ctx.beginPath();ctx.arc(p.x,p.y,1.5,0,Math.PI*2);ctx.fill();
+});
+requestAnimationFrame(draw);
+}
+draw();
+</script>
+
+</body>
+</html>
