@@ -8,7 +8,7 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Roboto',sans-serif;}
-body{background:#0f172a;color:#e5e7eb;overflow-x:hidden;}
+body{background:#0f172a;color:#e5e7eb;}
 header{position:fixed;top:0;width:100%;background:#111827;padding:20px 40px;z-index:1000;}
 nav a{color:#e5e7eb;margin-right:25px;text-decoration:none;font-weight:500;}
 nav a:hover{color:#38bdf8;}
@@ -32,25 +32,48 @@ background:#1f2937;
 padding:25px;
 border-radius:10px;
 box-shadow:0 6px 20px rgba(0,0,0,0.45);
-line-height:1.6;
+cursor:pointer;
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
 }
 
 .card h2{
-font-size:18px;
-margin-bottom:15px;
 color:#38bdf8;
+margin-bottom:10px;
+font-size:18px;
 }
 
 .badge{
 display:inline-block;
-margin-top:15px;
-padding:6px 10px;
+margin-top:10px;
+padding:5px 10px;
 font-size:12px;
 background:rgba(56,189,248,0.15);
 border:1px solid rgba(56,189,248,0.4);
 border-radius:6px;
-margin-right:6px;
-margin-bottom:6px;
+margin-right:5px;
+}
+
+/* Accordion */
+.card-content{
+max-height:0;
+overflow:hidden;
+transition:max-height 0.4s ease;
+margin-top:10px;
+}
+
+.card.active .card-content{
+max-height:600px;
+}
+
+.resources a{
+display:block;
+color:#38bdf8;
+margin-top:5px;
+font-size:14px;
 }
 
 #network-bg{
@@ -73,8 +96,9 @@ z-index:-1;
 <a href="index.html">Accueil</a>
 <a href="entreprise.html">Entreprise</a>
 <a href="projets.html">Projets</a>
-<a href="competences.html">Compétences / Logiciels</a>
+<a href="logiciel.html">Logiciels</a>
 <a href="veilles.html">Veilles</a>
+<a href="tableau.html">Tableau</a>
 <a href="contacts.html">Contacts</a>
 </nav>
 </header>
@@ -85,111 +109,106 @@ z-index:-1;
 
 <div class="grid">
 
-<!-- ================= PROJETS ENTREPRISE (INCHANGÉS) ================= -->
+<!-- ================= ENTREPRISE ================= -->
 
-<div class="card">
+<div class="card" onclick="toggleCard(this)">
 <h2>Création d’un lab en vue de Pentest</h2>
-<p>Mise en place d’un environnement virtualisé reproduisant une infrastructure interne (AD, segmentation réseau, machines vulnérables) afin de réaliser des tests d’intrusion contrôlés et analyser les failles potentielles.</p>
-<div>
-<span class="badge">Mettre à disposition un service informatique</span>
-<span class="badge">Travailler en mode projet</span>
+<p>Environnement virtualisé complet pour tests d’intrusion.</p>
+<div class="badge">Projet</div>
+
+<div class="card-content">
+<p>Infrastructure simulant un SI complet avec AD, segmentation réseau et machines vulnérables.</p>
+<div class="resources">
+<strong>Ressources :</strong>
+<a href="#">Rapport Pentest</a>
+<a href="#">Schéma réseau</a>
+</div>
 </div>
 </div>
 
-<div class="card">
-<h2>Réalisation de Pentest sur le lab</h2>
-<p>Exploitation de vulnérabilités connues (CVE), élévation de privilèges, rédaction de recommandations de durcissement de l’Active Directory et des systèmes.</p>
-<div>
-<span class="badge">Gérer le patrimoine informatique</span>
-<span class="badge">Organiser son développement professionnel</span>
+<div class="card" onclick="toggleCard(this)">
+<h2>Réalisation de Pentest</h2>
+<p>Tests d’intrusion sur le lab.</p>
+<div class="card-content">
+<p>Exploitation de vulnérabilités, élévation de privilèges, recommandations de sécurité.</p>
 </div>
 </div>
 
-<div class="card">
-<h2>Création de comptes VPN Fortinet (sortie Citrix)</h2>
-<p>Configuration et migration des accès distants vers une solution SSL-VPN Fortinet. Gestion des profils utilisateurs, règles firewall et tests de sécurité.</p>
-<div>
-<span class="badge">Mettre à disposition un service informatique</span>
-<span class="badge">Gérer le patrimoine informatique</span>
+<div class="card" onclick="toggleCard(this)">
+<h2>VPN Fortinet</h2>
+<p>Configuration d’accès sécurisé.</p>
+<div class="card-content">
+<p>Création de comptes VPN, gestion des règles firewall et sécurisation des accès.</p>
 </div>
 </div>
 
-<div class="card">
-<h2>Ouverture de flux Firewall Fortinet</h2>
-<p>Analyse des besoins métiers et configuration des règles de filtrage réseau. Documentation et validation des flux inter-VLAN.</p>
-<div>
-<span class="badge">Gérer le patrimoine informatique</span>
-<span class="badge">Répondre aux incidents</span>
+<div class="card" onclick="toggleCard(this)">
+<h2>Firewall Fortinet</h2>
+<p>Ouverture et gestion de flux.</p>
+<div class="card-content">
+<p>Configuration des règles réseau et validation des flux inter-VLAN.</p>
 </div>
 </div>
 
-<div class="card">
-<h2>Assistance ticketing SECOPS</h2>
-<p>Analyse d’alertes de sécurité, traitement des incidents, qualification des menaces et suivi via outil de ticketing interne.</p>
-<div>
-<span class="badge">Répondre aux incidents</span>
-<span class="badge">Gérer le patrimoine informatique</span>
+<div class="card" onclick="toggleCard(this)">
+<h2>SECOPS Ticketing</h2>
+<p>Gestion des incidents de sécurité.</p>
+<div class="card-content">
+<p>Analyse d’alertes, qualification des menaces et traitement des incidents.</p>
 </div>
 </div>
 
-<div class="card">
-<h2>Analyse mails de phishing</h2>
-<p>Étude des en-têtes, vérification SPF/DKIM/DMARC, identification des indicateurs de compromission et sensibilisation des utilisateurs.</p>
-<div>
-<span class="badge">Répondre aux incidents</span>
-<span class="badge">Organiser son développement professionnel</span>
+<div class="card" onclick="toggleCard(this)">
+<h2>Analyse phishing</h2>
+<p>Analyse de mails malveillants.</p>
+<div class="card-content">
+<p>Étude SPF/DKIM/DMARC et identification des indicateurs de compromission.</p>
 </div>
 </div>
 
-<div class="card">
-<h2>Gestion des blocages et whitelist Mimecast</h2>
-<p>Administration des règles de sécurité email, gestion des faux positifs et surveillance des tentatives d’usurpation d’identité.</p>
-<div>
-<span class="badge">Gérer le patrimoine informatique</span>
-<span class="badge">Répondre aux incidents</span>
+<div class="card" onclick="toggleCard(this)">
+<h2>Mimecast</h2>
+<p>Gestion sécurité email.</p>
+<div class="card-content">
+<p>Blocage, whitelist et protection contre l’usurpation d’identité.</p>
 </div>
 </div>
 
-<div class="card">
-<h2>Assistance installation Zscaler</h2>
-<p>Participation au déploiement de la solution de sécurisation des accès web, configuration des politiques de filtrage et tests de conformité.</p>
-<div>
-<span class="badge">Mettre à disposition un service informatique</span>
-<span class="badge">Travailler en mode projet</span>
+<div class="card" onclick="toggleCard(this)">
+<h2>Zscaler</h2>
+<p>Déploiement sécurité web.</p>
+<div class="card-content">
+<p>Configuration des politiques de filtrage et sécurisation des accès.</p>
 </div>
 </div>
 
-<div class="card">
-<h2>Formation et installation Tanium</h2>
-<p>Déploiement de l’agent sur les endpoints, supervision de la conformité sécurité et montée en compétences sur l’outil.</p>
-<div>
-<span class="badge">Gérer le patrimoine informatique</span>
-<span class="badge">Organiser son développement professionnel</span>
+<div class="card" onclick="toggleCard(this)">
+<h2>Tanium</h2>
+<p>Gestion des endpoints.</p>
+<div class="card-content">
+<p>Déploiement agent et supervision sécurité.</p>
 </div>
 </div>
 
-<div class="card">
-<h2>Projet « Golden Ticket » – Sécurité AD</h2>
-<p>Analyse des vulnérabilités Kerberos, audit des comptes à privilèges élevés et recommandations de sécurisation de l’Active Directory.</p>
-<div>
-<span class="badge">Gérer le patrimoine informatique</span>
-<span class="badge">Travailler en mode projet</span>
+<div class="card" onclick="toggleCard(this)">
+<h2>Golden Ticket AD</h2>
+<p>Audit sécurité Active Directory.</p>
+<div class="card-content">
+<p>Analyse des vulnérabilités Kerberos et recommandations de sécurisation.</p>
 </div>
 </div>
 
-<div class="card">
-<h2>Veille sur les CVE et Zero Day</h2>
-<p>Suivi des vulnérabilités critiques, analyse d’impact sur le SI interne et transmission d’alertes au service sécurité.</p>
-<div>
-<span class="badge">Organiser son développement professionnel</span>
-<span class="badge">Gérer le patrimoine informatique</span>
+<div class="card" onclick="toggleCard(this)">
+<h2>Veille CVE / Zero Day</h2>
+<p>Suivi des vulnérabilités.</p>
+<div class="card-content">
+<p>Analyse d’impact et remontée des alertes sécurité.</p>
 </div>
 </div>
 
 </div>
+
 </section>
-
-<!-- ================= NOUVELLE SECTION ================= -->
 
 <section>
 
@@ -197,49 +216,84 @@ z-index:-1;
 
 <div class="grid">
 
-<div class="card">
-<h2>Installation et utilisation de Proxmox</h2>
-<p>Déploiement d’un hyperviseur permettant la virtualisation d’infrastructures complètes pour tests réseau et sécurité.</p>
+<div class="card" onclick="toggleCard(this)">
+<h2>Proxmox</h2>
+<p>Virtualisation d’infrastructure.</p>
+<div class="card-content">
+<p>Création de machines virtuelles et simulation réseau.</p>
+</div>
 </div>
 
-<div class="card">
-<h2>Configuration d’un service DHCP sous Linux</h2>
-<p>Mise en place d’un serveur DHCP pour automatiser l’attribution des adresses IP.</p>
+<div class="card" onclick="toggleCard(this)">
+<h2>DHCP Linux</h2>
+<p>Attribution IP automatique.</p>
+<div class="card-content">
+<p>Configuration d’un serveur DHCP sous Linux.</p>
+</div>
 </div>
 
-<div class="card">
-<h2>Configuration d’un service DNS sous Linux</h2>
-<p>Configuration d’un serveur DNS pour la résolution de noms internes et externes.</p>
+<div class="card" onclick="toggleCard(this)">
+<h2>DNS Linux</h2>
+<p>Résolution de noms.</p>
+<div class="card-content">
+<p>Mise en place d’un serveur DNS (BIND).</p>
+</div>
 </div>
 
-<div class="card">
-<h2>Configuration d’un service Active Directory</h2>
-<p>Déploiement d’un domaine Windows avec gestion des utilisateurs et stratégies de groupe.</p>
+<div class="card" onclick="toggleCard(this)">
+<h2>Active Directory</h2>
+<p>Gestion domaine Windows.</p>
+<div class="card-content">
+<p>Gestion utilisateurs, GPO et sécurité.</p>
+</div>
 </div>
 
-<div class="card">
-<h2>Mise en place d’un Bastion Wallix</h2>
-<p>Installation d’une solution de gestion des accès privilégiés pour sécuriser les connexions.</p>
+<div class="card" onclick="toggleCard(this)">
+<h2>Wallix Bastion</h2>
+<p>Sécurisation des accès.</p>
+<div class="card-content">
+<p>Gestion des accès privilégiés.</p>
+</div>
 </div>
 
-<div class="card">
-<h2>Mise en place d’un pare-feu Stormshield</h2>
-<p>Configuration d’un firewall pour sécuriser les flux réseau et filtrer le trafic.</p>
+<div class="card" onclick="toggleCard(this)">
+<h2>Stormshield</h2>
+<p>Firewall.</p>
+<div class="card-content">
+<p>Configuration des règles de sécurité réseau.</p>
+</div>
 </div>
 
-<div class="card">
-<h2>Mise en place d’un Hyperviseur Centreon</h2>
-<p>Supervision des infrastructures et des services via Centreon.</p>
+<div class="card" onclick="toggleCard(this)">
+<h2>Centreon</h2>
+<p>Supervision.</p>
+<div class="card-content">
+<p>Monitoring des services et infrastructures.</p>
+</div>
 </div>
 
-<div class="card">
-<h2>Mise en place de Certificats SSL</h2>
-<p>Déploiement de certificats pour sécuriser les communications réseau.</p>
+<div class="card" onclick="toggleCard(this)">
+<h2>Certificats SSL</h2>
+<p>Sécurisation HTTPS.</p>
+<div class="card-content">
+<p>Mise en place de certificats et chiffrement.</p>
+</div>
 </div>
 
 </div>
 
 </section>
+
+<script>
+function toggleCard(selected){
+document.querySelectorAll(".card").forEach(card=>{
+if(card !== selected){
+card.classList.remove("active");
+}
+});
+selected.classList.toggle("active");
+}
+</script>
 
 <script src="background.js"></script>
 
