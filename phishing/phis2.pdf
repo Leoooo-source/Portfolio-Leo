@@ -1,0 +1,137 @@
+Protocole d’analyse de phishing — niveau IT / sécurité
+
+Quand un mail suspect remonte (signalement utilisateur, alerte, ou détection automatique), tu ne le regardes pas comme un simple message. Tu le traites comme un artefact potentiellement malveillant.
+
+La première chose à faire, c’est de travailler sur une copie contrôlée. Tu récupères le mail dans son format brut (EML ou headers complets). Tu évites absolument toute analyse directe depuis la boîte utilisateur pour ne pas altérer les données ou déclencher un contenu actif.
+
+À partir de là, ton objectif n’est pas de “voir si c’est bizarre”, mais de reconstruire ce qui s’est réellement passé.
+
+1. Analyse de l’origine réelle du mail
+
+Tu commences toujours par les en-têtes.
+
+Tu ne regardes pas uniquement le From, mais toute la chaîne de transmission. Tu remontes les lignes Received pour identifier :
+
+le serveur d’origine réel
+l’IP source initiale
+la cohérence du routage
+
+Très souvent, le point clé est là. Un mail censé venir d’un service légitime mais envoyé depuis une infrastructure inconnue est déjà suspect.
+
+Ensuite, tu vérifies les mécanismes d’authentification :
+
+SPF (est-ce que le serveur est autorisé ?)
+DKIM (signature valide ou non)
+DMARC (alignement respecté ou non)
+
+Un échec ou une incohérence ne suffit pas toujours à conclure, mais plusieurs signaux combinés orientent rapidement vers du phishing.
+
+2. Analyse du domaine et de l’infrastructure
+
+Une fois l’origine identifiée, tu passes au domaine.
+
+Tu ne te contentes pas de lire le nom. Tu vas chercher :
+
+la date de création du domaine
+le registrar
+les enregistrements DNS
+les éventuels historiques
+
+Un domaine récent, peu documenté ou incohérent avec l’identité affichée est un indicateur fort.
+
+Tu peux également regarder si le domaine est déjà référencé comme malveillant dans des bases de threat intel.
+
+À ce stade, tu commences déjà à avoir une idée : soit tu es face à un spoofing grossier, soit à une infrastructure plus travaillée.
+
+3. Analyse des liens contenus dans le mail
+
+Tu extrais tous les liens, sans jamais les ouvrir directement.
+
+Tu regardes :
+
+l’URL réelle (pas le texte affiché)
+la structure du domaine
+les éventuels redirections
+
+Ensuite, tu passes ces liens dans des outils d’analyse :
+
+sandbox web
+réputation (VirusTotal, etc.)
+résolution DNS
+
+Ce que tu cherches, ce n’est pas seulement “malveillant ou non”, mais le comportement. Est-ce que le lien redirige ? Est-ce qu’il mène à une page de login ? Est-ce qu’il charge du contenu dynamique ?
+
+Un lien qui imite une page de connexion est un classique. Même s’il n’est pas encore blacklisté, son comportement peut suffire à le qualifier.
+
+4. Analyse des pièces jointes (si présentes)
+
+Si le mail contient une pièce jointe, tu passes immédiatement en analyse contrôlée.
+
+Tu ne l’ouvres jamais directement.
+
+Tu extrais le fichier et tu observes :
+
+son type réel (pas juste l’extension)
+son hash
+son comportement en sandbox
+
+Un fichier Office avec macros, un HTML, un ZIP avec exécutable, ou même un PDF avec redirection externe sont des cas fréquents.
+
+L’objectif ici est clair : déterminer si le fichier est un vecteur d’exécution ou de collecte d’informations.
+
+5. Corrélation avec ton environnement
+
+C’est ici que ton rôle IT fait vraiment la différence.
+
+Tu ne t’arrêtes pas au mail. Tu vérifies si quelque chose s’est déjà produit.
+
+Tu regardes :
+
+les logs de messagerie (qui a reçu le mail ?)
+les logs proxy / firewall (quelqu’un a cliqué ?)
+les logs d’authentification (connexion suspecte ?)
+
+Si tu vois une tentative de connexion après réception du mail, ou un accès au domaine malveillant, tu n’es plus en phase d’analyse simple : tu es en début d’incident.
+
+6. Qualification
+
+À ce stade, tu ne “penses” plus que c’est du phishing. Tu le qualifies.
+
+Tu te bases sur :
+
+incohérence d’origine
+domaine suspect
+lien malveillant ou trompeur
+comportement observé
+
+Si plusieurs de ces éléments sont présents, tu classes le mail comme phishing sans ambiguïté.
+
+7. Actions immédiates
+
+Une fois qualifié, tu passes en réponse.
+
+Tu bloques :
+
+le domaine
+les URL
+éventuellement l’IP source
+
+Tu supprimes le mail des boîtes utilisateurs si nécessaire.
+
+Tu informes les utilisateurs concernés si l’impact est large.
+
+8. Si compromission potentielle
+
+Si quelqu’un a interagi avec le mail, tu changes complètement de posture.
+
+Tu dois vérifier :
+
+si des identifiants ont été saisis
+si un malware a été exécuté
+si une session a été compromise
+
+Les actions deviennent alors :
+
+reset des comptes concernés
+isolation des machines
+analyse plus profonde des logs
