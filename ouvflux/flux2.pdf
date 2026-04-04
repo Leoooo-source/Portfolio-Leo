@@ -1,0 +1,83 @@
+Ouverture de flux sur Fortinet — de la compréhension à l’exécution
+
+Quand on ouvre un flux sur un firewall Fortinet, il y a toujours deux niveaux.
+Celui qu’on voit — créer une règle — et celui qu’on oublie souvent — comprendre ce que cette règle va réellement autoriser.
+
+Si on se contente de cliquer dans l’interface jusqu’à ce que “ça marche”, on finit presque toujours avec une configuration floue. À l’inverse, quand on comprend le chemin du flux avant même d’ouvrir la console, la configuration devient presque mécanique.
+
+Tout commence donc en dehors du firewall.
+
+On identifie une source, une destination, un besoin précis. Une machine doit accéder à un service, sur un port donné, dans un sens donné. Dit comme ça, c’est simple. Mais ce qui compte réellement, c’est comment ce flux traverse le firewall.
+
+Sur Fortinet, ce passage est structuré autour des interfaces. Le trafic n’est jamais abstrait : il entre par une interface, il sort par une autre. C’est cette traversée que la politique de sécurité va encadrer.
+
+Une fois ce chemin compris, on peut passer dans la console.
+
+Entrer dans la logique Fortinet
+
+Quand tu arrives sur l’interface web du FortiGate, tu ne commences pas par créer une règle. Ce serait aller trop vite.
+
+Tu vas d’abord vérifier que les objets existent déjà. Parce que sur Fortinet, on ne travaille presque jamais directement avec des IP brutes dans les politiques. On travaille avec des objets.
+
+Dans le menu Policy & Objects, tu passes par Addresses. Là, tu crées ou vérifies tes objets source et destination. Une machine, un serveur, parfois un réseau entier. L’idée, ce n’est pas juste de faire fonctionner le flux, mais de garder quelque chose de lisible dans le temps.
+
+À ce moment-là, tu es encore dans la préparation. Tu définis ce que le firewall devra reconnaître.
+
+Ensuite, tu passes sur les services. Même logique. Si le service existe déjà (HTTP, HTTPS, SSH…), tu le réutilises. Sinon, tu en crées un. Là encore, ce n’est pas du détail : définir correctement le service, c’est contrôler exactement ce que tu autorises.
+
+Créer la règle — mais dans le bon sens
+
+Une fois ces éléments prêts, tu peux enfin aller dans Policy & Objects → Firewall Policy.
+
+C’est ici que beaucoup font une erreur classique : ils créent une règle sans réfléchir à son positionnement.
+
+Sur Fortinet, les règles sont lues de haut en bas. La première qui correspond est appliquée. Donc ton flux ne dépend pas seulement de ta règle, mais aussi de celles qui sont au-dessus.
+
+Quand tu ajoutes une nouvelle policy, tu dois immédiatement penser à ça. Où doit-elle être placée pour être vue, mais sans casser le reste ?
+
+Ensuite, la configuration elle-même devient assez naturelle si tu as bien réfléchi en amont.
+
+Tu définis l’interface d’entrée — celle par laquelle le flux arrive. Puis l’interface de sortie — celle vers laquelle il doit aller. Rien que ce choix valide déjà ton raisonnement réseau.
+
+Puis tu associes tes objets. Source, destination. Ici, tu ne “devines” plus, tu appliques ce que tu as préparé.
+
+Le service vient ensuite. C’est lui qui va vraiment restreindre le flux. C’est souvent là que la différence se fait entre une règle propre et une règle trop permissive.
+
+Enfin, tu définis l’action. En général, ACCEPT. Mais ce n’est pas ce qui est intéressant. Ce qui compte, c’est tout ce qui encadre cette autorisation.
+
+Le point souvent mal compris : le NAT
+
+À ce moment-là, une question doit toujours te traverser l’esprit : est-ce que l’adresse doit être traduite ?
+
+Sur Fortinet, l’option NAT est intégrée directement dans la policy. Et c’est là que beaucoup de flux “ne marchent pas” alors que la règle semble correcte.
+
+Si ton trafic doit sortir vers Internet, le NAT est généralement nécessaire. Si tu es dans un réseau interne, souvent non.
+
+Mais ce qui compte, ce n’est pas la règle générale. C’est ton architecture.
+Si tu ne sais pas comment les adresses sont vues de chaque côté, tu configures à l’aveugle.
+
+Quand la règle est en place… mais que ça ne marche pas
+
+C’est souvent là que commence le vrai travail.
+
+Une règle bien configurée ne garantit pas que le flux fonctionne. Elle garantit seulement que le firewall ne le bloque pas.
+
+Si ça ne passe pas, il faut changer de point de vue. Ne plus regarder la règle, mais regarder le flux lui-même.
+
+Sur Fortinet, les logs deviennent ton meilleur outil. Tu peux voir si le trafic est accepté, refusé, ou même s’il n’atteint jamais le firewall.
+
+Et c’est souvent révélateur.
+Un flux qui ne matche aucune policy ne passe même pas dans ta règle.
+Un flux accepté mais sans réponse indique souvent un problème ailleurs.
+
+Petit à petit, tu reconstruis le chemin réel du trafic, pas celui que tu avais imaginé.
+
+Ce que tu fais réellement quand tu “ouvres un flux”
+
+Avec l’habitude, tu te rends compte que tu ne crées plus des règles. Tu décris des comportements.
+
+Tu dis au firewall : “si tu vois ce type de trafic, dans ce contexte précis, alors tu peux le laisser passer”.
+
+Et plus cette description est précise, plus ton firewall reste propre, lisible, et sécurisé.
+
+À l’inverse, si tu raisonnes uniquement en mode “ça doit marcher”, tu finis par ouvrir trop large, mal positionner tes règles, et perdre toute maîtrise.
